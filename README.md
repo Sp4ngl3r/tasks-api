@@ -71,6 +71,12 @@ Update the `.env` file with your database credentials.
 
 ---
 
+## API Base URL
+
+#### The API base URL is `https://tasks-api-main-qvogx2.laravel.cloud`
+
+---
+
 ## API Endpoints
 
 ### **Authentication**
