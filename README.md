@@ -1,66 +1,212 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Task Management API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+This is a RESTful API built with Laravel that allows users to manage tasks. The API provides authentication using JWT
+and includes endpoints for user registration, login, and task management (adding, fetching, updating, and deleting
+tasks).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- User authentication using JWT (JSON Web Token)
+- Role-based access control for tasks
+- CRUD operations for tasks
+- Pagination for task listings
+- Validation and exception handling
+- API testing using Postman
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Prerequisites
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Ensure you have the following installed:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- PHP 8.1+
+- Composer
+- Laravel 12
+- PostgreSQL or MySQL
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Clone the repository
 
-### Premium Partners
+```sh
+    git clone git@github.com:Sp4ngl3r/tasks-api.git
+    cd your-project-directory
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 2. Install dependencies
 
-## Contributing
+```sh
+    composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Set up the environment file
 
-## Code of Conduct
+```sh
+    cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Update the `.env` file with your database credentials.
 
-## Security Vulnerabilities
+### 4. Generate the application key
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```sh
+    php artisan key:generate
+```
+
+### 5. Generate JWT secret key
+
+```sh
+    php artisan jwt:secret
+```
+
+### 6. Start the development server
+
+```sh
+    php artisan serve
+```
+
+---
+
+## API Endpoints
+
+### **Authentication**
+
+#### Register a new user
+
+```http
+POST /api/v1/auth/register
+```
+
+**Request Body:**
+
+```json
+{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password"
+}
+```
+
+#### Login
+
+```http
+POST /api/v1/auth/login
+```
+
+**Request Body:**
+
+```json
+{
+    "email": "john@example.com",
+    "password": "password"
+}
+```
+
+#### Logout
+
+```http
+POST /api/logout
+```
+
+**Headers:**
+
+```json
+Authorization: Bearer {token}
+```
+
+#### Get Authenticated User
+
+```http
+GET /api/v1/auth/me
+```
+
+---
+
+### **Task Management**
+
+#### Get All Tasks (Paginated)
+
+```http
+GET /api/tasks?page=1
+```
+
+**Headers:**
+
+```json
+Authorization: Bearer {token}
+```
+
+#### Get a Single Task
+
+```http
+GET /api/tasks/{task_id}
+```
+
+#### Create a Task
+
+```http
+POST /api/tasks
+```
+
+**Request Body:**
+
+```json
+{
+    "title": "New Task",
+    "description": "Task details",
+    "status": "pending"
+}
+```
+
+#### Update a Task
+
+```http
+PUT /api/tasks/{task_id}
+```
+
+#### Delete a Task
+
+```http
+DELETE /api/tasks/{task_id}
+```
+
+---
+
+## Authentication & Authorization
+
+- The API uses **JWT authentication** to protect endpoints.
+- Users can only manage their own tasks.
+- Unauthorized access will return **403 Forbidden**.
+
+---
+
+## Running Tests
+
+Run tests using **Pest**:
+
+```sh
+php artisan test
+```
+
+To run all tests in parallel:
+
+```sh
+php artisan test --parallel
+```
+
+---
+
+## Postman Collection
+
+You can import the [Postman collection](Tasks%20API.postman_collection.json) to test the API endpoints.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-source and available under the [MIT License](LICENSE).
+

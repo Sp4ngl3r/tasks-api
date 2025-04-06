@@ -42,7 +42,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task): TaskResource|JsonResponse
+    public function show(Task $task): TaskResource
     {
         Gate::authorize('view', $task);
 

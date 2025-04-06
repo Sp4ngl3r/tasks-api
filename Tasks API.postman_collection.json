@@ -1,0 +1,1032 @@
+{
+	"info": {
+		"_postman_id": "ebe31e41-97fd-4127-be9b-7e58931f4346",
+		"name": "Tasks API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12970955"
+	},
+	"item": [
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create a task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rhc2tzLWFwaS1tYWluLXF2b2d4Mi5sYXJhdmVsLmNsb3VkL2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNzQzOTQ0NDY2LCJleHAiOjE3NDM5NDgwNjYsIm5iZiI6MTc0Mzk0NDQ2NiwianRpIjoiUWZ1TEFzWFlQVlNxUEt2RSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.fuLWPLniVxMRmjyIZ9yPFblaxYac1_JVAcCt9xGP2Z4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Task 1\",\n    \"description\": \"Description 1\",\n    \"status\": \"completed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks",
+							"protocol": "https",
+							"host": [
+								"tasks-api-main-qvogx2",
+								"laravel",
+								"cloud"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Task Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Task 1\",\n    \"description\": \"Description 1\",\n    \"status\": \"completed\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks",
+									"protocol": "https",
+									"host": [
+										"tasks-api-main-qvogx2",
+										"laravel",
+										"cloud"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 13:01:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "Thu, 01 Jan 1970 00:00:01 GMT"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-robots-tag",
+									"value": "noindex, nofollow"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "92c1798cfff07f2b-MAA"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Task 1\",\n        \"description\": \"Description 1\",\n        \"status\": \"completed\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all tasks of a user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rhc2tzLWFwaS1tYWluLXF2b2d4Mi5sYXJhdmVsLmNsb3VkL2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNzQzOTQ0NDY2LCJleHAiOjE3NDM5NDgwNjYsIm5iZiI6MTc0Mzk0NDQ2NiwianRpIjoiUWZ1TEFzWFlQVlNxUEt2RSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.fuLWPLniVxMRmjyIZ9yPFblaxYac1_JVAcCt9xGP2Z4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Task 1\",\n    \"description\": \"Description 1\",\n    \"status\": \"completed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks",
+							"protocol": "https",
+							"host": [
+								"tasks-api-main-qvogx2",
+								"laravel",
+								"cloud"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Tasks Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Task 1\",\n    \"description\": \"Description 1\",\n    \"status\": \"completed\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks",
+									"protocol": "https",
+									"host": [
+										"tasks-api-main-qvogx2",
+										"laravel",
+										"cloud"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 13:27:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "330"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "expires",
+									"value": "Thu, 01 Jan 1970 00:00:01 GMT"
+								},
+								{
+									"key": "vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-robots-tag",
+									"value": "noindex, nofollow"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "92c19ecf983d7f9b-MAA"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 3,\n            \"title\": \"Task 1\",\n            \"description\": \"Description 1\",\n            \"status\": \"completed\",\n            \"created_at\": \"2025-04-06T10:58:30.000000Z\",\n            \"updated_at\": \"2025-04-06T10:58:30.000000Z\"\n        }\n    ],\n    \"first_page_url\": \"https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks?page=1\",\n    \"from\": 1,\n    \"last_page\": 1,\n    \"last_page_url\": \"https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks?page=1\",\n    \"links\": [\n        {\n            \"url\": null,\n            \"label\": \"&laquo; Previous\",\n            \"active\": false\n        },\n        {\n            \"url\": \"https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks?page=1\",\n            \"label\": \"1\",\n            \"active\": true\n        },\n        {\n            \"url\": null,\n            \"label\": \"Next &raquo;\",\n            \"active\": false\n        }\n    ],\n    \"next_page_url\": null,\n    \"path\": \"https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks\",\n    \"per_page\": 10,\n    \"prev_page_url\": null,\n    \"to\": 1,\n    \"total\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a particular task",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rhc2tzLWFwaS1tYWluLXF2b2d4Mi5sYXJhdmVsLmNsb3VkL2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNzQzOTQ0NDY2LCJleHAiOjE3NDM5NDgwNjYsIm5iZiI6MTc0Mzk0NDQ2NiwianRpIjoiUWZ1TEFzWFlQVlNxUEt2RSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.fuLWPLniVxMRmjyIZ9yPFblaxYac1_JVAcCt9xGP2Z4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks/1",
+							"protocol": "https",
+							"host": [
+								"tasks-api-main-qvogx2",
+								"laravel",
+								"cloud"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Particular Task Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks/1",
+									"protocol": "https",
+									"host": [
+										"tasks-api-main-qvogx2",
+										"laravel",
+										"cloud"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 13:32:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "expires",
+									"value": "Thu, 01 Jan 1970 00:00:01 GMT"
+								},
+								{
+									"key": "vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-robots-tag",
+									"value": "noindex, nofollow"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "92c1a69c68267f49-MAA"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Task 1\",\n        \"description\": \"Description 1\",\n        \"status\": \"completed\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rhc2tzLWFwaS1tYWluLXF2b2d4Mi5sYXJhdmVsLmNsb3VkL2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNzQzOTQ0NDY2LCJleHAiOjE3NDM5NDgwNjYsIm5iZiI6MTc0Mzk0NDQ2NiwianRpIjoiUWZ1TEFzWFlQVlNxUEt2RSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.fuLWPLniVxMRmjyIZ9yPFblaxYac1_JVAcCt9xGP2Z4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Task\",\n    \"description\": \"Updated Description\",\n    \"status\": \"pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks/2",
+							"protocol": "https",
+							"host": [
+								"tasks-api-main-qvogx2",
+								"laravel",
+								"cloud"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Task Success Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Updated Task\",\n    \"description\": \"Updated Description\",\n    \"status\": \"pending\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks/2",
+									"protocol": "https",
+									"host": [
+										"tasks-api-main-qvogx2",
+										"laravel",
+										"cloud"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 13:22:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "expires",
+									"value": "Thu, 01 Jan 1970 00:00:01 GMT"
+								},
+								{
+									"key": "vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-robots-tag",
+									"value": "noindex, nofollow"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "92c197a0ab267e72-MAA"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task updated successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rhc2tzLWFwaS1tYWluLXF2b2d4Mi5sYXJhdmVsLmNsb3VkL2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNzQzOTQ0NDY2LCJleHAiOjE3NDM5NDgwNjYsIm5iZiI6MTc0Mzk0NDQ2NiwianRpIjoiUWZ1TEFzWFlQVlNxUEt2RSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.fuLWPLniVxMRmjyIZ9yPFblaxYac1_JVAcCt9xGP2Z4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks/2",
+							"protocol": "https",
+							"host": [
+								"tasks-api-main-qvogx2",
+								"laravel",
+								"cloud"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Task Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/tasks/2",
+									"protocol": "https",
+									"host": [
+										"tasks-api-main-qvogx2",
+										"laravel",
+										"cloud"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 13:25:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "expires",
+									"value": "Thu, 01 Jan 1970 00:00:01 GMT"
+								},
+								{
+									"key": "vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-robots-tag",
+									"value": "noindex, nofollow"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "92c19c335b7e1798-MAA"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task deleted successfully.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User 2\",\n    \"email\": \"testuser2@email.com\",\n    \"password\": \"secretP@ssword2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/auth/register",
+							"protocol": "https",
+							"host": [
+								"tasks-api-main-qvogx2",
+								"laravel",
+								"cloud"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Registration Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test User 2\",\n    \"email\": \"testuser2@email.com\",\n    \"password\": \"secretP@ssword2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/auth/register",
+									"protocol": "https",
+									"host": [
+										"tasks-api-main-qvogx2",
+										"laravel",
+										"cloud"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 10:51:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "521"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "expires",
+									"value": "Thu, 01 Jan 1970 00:00:01 GMT"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-robots-tag",
+									"value": "noindex, nofollow"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "92c0bb584ebd7fe8-MAA"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User successfully registered.\",\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Test User 2\",\n        \"email\": \"testuser2@email.com\"\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rhc2tzLWFwaS1tYWluLXF2b2d4Mi5sYXJhdmVsLmNsb3VkL2FwaS92MS9hdXRoL3JlZ2lzdGVyIiwiaWF0IjoxNzQzOTM2NzA1LCJleHAiOjE3NDM5NDAzMDUsIm5iZiI6MTc0MzkzNjcwNSwianRpIjoiMnZBdExLZ2ZsWTF1WUdXSiIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.IoehoGahT9Kln0S28fU9Mwl8yQY7tFKloCKbRx2I1hI\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"testuser2@email.com\",\n    \"password\": \"secretP@ssword2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"tasks-api-main-qvogx2",
+								"laravel",
+								"cloud"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Login Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"testuser2@email.com\",\n    \"password\": \"secretP@ssword2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://tasks-api-main-qvogx2.laravel.cloud/api/v1/auth/login",
+									"protocol": "https",
+									"host": [
+										"tasks-api-main-qvogx2",
+										"laravel",
+										"cloud"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 10:57:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "391"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "expires",
+									"value": "Thu, 01 Jan 1970 00:00:01 GMT"
+								},
+								{
+									"key": "vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "x-robots-tag",
+									"value": "noindex, nofollow"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "92c0c400eda97f25-MAA"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"message\": \"User successfully logged in.\",\n        \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rhc2tzLWFwaS1tYWluLXF2b2d4Mi5sYXJhdmVsLmNsb3VkL2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNzQzOTM3MDYwLCJleHAiOjE3NDM5NDA2NjAsIm5iZiI6MTc0MzkzNzA2MCwianRpIjoiNWdWMWdMU3ZHclBuWG5MMCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ZHbbyyCueJpXK0eN3FdUG3RGojyqSqeG2398GJJdZT0\",\n        \"token_type\": \"bearer\",\n        \"expires_in\": 3600\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
